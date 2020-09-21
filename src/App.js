@@ -53,14 +53,13 @@ function App() {
   });
 
   const updateInput = (user) => {
-    setSearch(user);
+    setInputValue(user);
     setDisplay(false);
   };
 
   return (
-    <>
+    <div ref={wrapperRef}>
       <form
-        ref={wrapperRef}
         onSubmit={(event) => {
           event.preventDefault();
           setInputValue(event.target.elements.searchUsers.value);
@@ -90,19 +89,22 @@ function App() {
       {display && (
         <div>
           {users.map((user) => {
+            const userUrl = `https://github.com/${user.login}`;
             return (
-              <div
-                key={user.id}
-                onClick={() => updateInput(user.login)}
-                tabIndex="0">
-                <li>{user.login}</li>
-                <img src={user.avatar_url} alt={user.login} />
-              </div>
+              <a href={userUrl} target="_blank">
+                <div
+                  key={user.id}
+                  onClick={() => updateInput(user.login)}
+                  tabIndex="0">
+                  <li>{user.login}</li>
+                  <img src={user.avatar_url} alt={user.login} />
+                </div>
+              </a>
             );
           })}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
