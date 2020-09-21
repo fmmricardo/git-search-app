@@ -91,7 +91,7 @@ function App() {
           {users.map((user) => {
             const userUrl = `https://github.com/${user.login}`;
             return (
-              <a href={userUrl} target="_blank">
+              <a href={userUrl} target="_blank" rel="noopener noreferrer">
                 <div
                   key={user.id}
                   onClick={() => updateInput(user.login)}
