@@ -7,7 +7,7 @@ import {
   handleArrowDown,
 } from "../../auxiliarFunctions/keypressFunctions";
 
-import "../../styles/main.scss";
+import "./index.scss";
 
 const Autocomplete = () => {
   useKey("Enter", handleEnter);
@@ -84,21 +84,25 @@ const Autocomplete = () => {
       {isLoading && <div>Loading ...</div>}
       {users === "" && <div>No Results found</div>}
       {display && (
-        <div className="autoContainer">
+        <div className="userContainer">
           {users.map((user) => {
             const userUrl = `https://github.com/${user.login}`;
             return (
-              <div
-                className="option"
-                onClick={() => updateInput(user.login)}
-                tabIndex="0">
+              <div onClick={() => updateInput(user.login)} tabIndex="0">
                 <a
+                  className="option"
                   key={user.id}
                   href={userUrl}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <li>{user.login}</li>
-                  <img src={user.avatar_url} alt={user.login} />
+                  <div>{user.login}</div>
+                  <div>
+                    <img
+                      className="image"
+                      src={user.avatar_url}
+                      alt={user.login}
+                    />
+                  </div>
                 </a>
               </div>
             );
