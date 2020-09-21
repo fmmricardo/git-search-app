@@ -1,35 +1,17 @@
 import React, {useState, useEffect, useRef} from "react";
-import "./App.css";
-
-//
-//Create effect for tracking keys
-//
-const useKey = (key, cb) => {
-  const callbackRef = useRef(cb);
-
-  useEffect(() => {
-    callbackRef.current = cb;
-  });
-
-  useEffect(() => {
-    if (even.code === key) {
-      callbackRef(event);
-    }
-
-    document.addEventListener("keypress", handle);
-    return () => {
-      document.removeEventListener("keypress", handle);
-    };
-  }),
-    [key];
-};
-
-//
-//End Create effect for tracking keys
-//
+import {
+  useKey,
+  handleEnter,
+  handleArrowUp,
+  handleArrowDown,
+} from "../src/auxiliarFunctions/keypressFunctions";
+import "../src/styles/main.scss";
 
 function App() {
-  usekey("Enter", handleEnter);
+  useKey("Enter", handleEnter);
+  useKey("ArrowUp", handleArrowUp);
+  useKey("ArrowDown", handleArrowDown);
+
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -81,17 +63,15 @@ function App() {
         ref={wrapperRef}
         onSubmit={(event) => {
           event.preventDefault();
-          setInputValue(event.target.elements.query.value);
+          setInputValue(event.target.elements.searchUsers.value);
           setDisplay(true);
         }}>
         <div className="App">
           <input
             id="namedInput"
             type="text"
-            name="query"
             name="searchUsers"
             value={search}
-            aria-label={labelText}
             aria-required="true"
             placeholder="Search Github Users"
             onChange={(event) => setSearch(event.target.value)}
@@ -111,8 +91,11 @@ function App() {
         <div>
           {users.map((user) => {
             return (
-              <div onClick={() => updateInput(user.login)} tabIndex="0">
-                <li key={user.id}>{user.login}</li>
+              <div
+                key={user.id}
+                onClick={() => updateInput(user.login)}
+                tabIndex="0">
+                <li>{user.login}</li>
                 <img src={user.avatar_url} alt={user.login} />
               </div>
             );
