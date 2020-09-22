@@ -6,6 +6,7 @@ import {
   handleArrowUp,
   handleArrowDown,
 } from "../../auxiliarFunctions/keypressFunctions";
+import {magnifyGlass} from "../../assets/loupe.png";
 
 import "./index.scss";
 
@@ -19,7 +20,7 @@ const Autocomplete = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [display, setDisplay] = useState(false);
-  const [search, setSearch] = useState("");
+  //const [search, setSearch] = useState("");
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +33,6 @@ const Autocomplete = () => {
       .then((data) => {
         setUsers(data.items);
         setIsLoading(false);
-        console.log(data.items);
       })
       .catch((error) => {
         setError(error);
@@ -73,23 +73,24 @@ const Autocomplete = () => {
             id="namedInput"
             type="text"
             name="searchUsers"
-            value={search}
             aria-required="true"
             placeholder="Search Github Users"
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={(event) => setInputValue(event.target.value)}
             onClick={() => setDisplay(!display)}
           />
+          <img className="image" src={magnifyGlass} alt="search bar" />
         </div>
-      </form>
-      {isLoading && <div>Loading ...</div>}
-      {users === "" && <div>No Results found</div>}
-      {display && (
-        <div className="userContainer">
-          {users.map((user) => {
-            const userUrl = `https://github.com/${user.login}`;
-            return (
-              <div onClick={() => updateInput(user.login)} tabIndex="0">
+        {isLoading && <div>Loading ...</div>}
+        {users === "" && <div>No Results found</div>}
+        {error && <div>Loading ...</div>}
+        {display && users && (
+          <div className="userContainer">
+            {users.map((user) => {
+              const userUrl = `https://github.com/${user.login}`;
+              return (
                 <a
+                  onClick={() => updateInput(user.login)}
+                  tabIndex="0"
                   className="option"
                   key={user.id}
                   href={userUrl}
@@ -104,11 +105,11 @@ const Autocomplete = () => {
                     />
                   </div>
                 </a>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </form>
     </div>
   );
 };

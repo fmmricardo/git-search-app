@@ -1,7 +1,7 @@
 import React from "react";
 import Autocomplete from "../src/components/Autocomplete/";
 
-import "../src/styles/main.scss";
+import "./App.scss";
 
 function App() {
   return (
