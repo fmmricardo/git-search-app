@@ -1,5 +1,8 @@
 body {
   margin: 0;
+
+  background: var(--color-background);
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -13,9 +16,26 @@ code {
 }
 
 .App {
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.titleContainer {
+  width: 100%;
+  height: 200px;
+  padding-top: var(--size-100);
+  margin: 0 auto;
+
+  background: var(--color-background);
+
+  font-size: var(--size-24);
+  line-height: var(--size-32);
+}
+
+.autoContainer {
+  width: 300px;
 }
