@@ -33,6 +33,6 @@ const SearchUsers = (props) => {
 }
 
 SearchUsers.propTypes = {
-  users: PropTypes.node.isRequired,
+  users: PropTypes.array.isRequired,
 }
 export default SearchUsers
