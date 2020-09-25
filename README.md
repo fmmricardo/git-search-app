@@ -1,5 +1,3 @@
-
-
 # Git search app
 
 Starting an app to search github users
@@ -9,7 +7,6 @@ Starting an app to search github users
 - [Installation](#installation)
 - [Setup](#setup)
 - [Development](#development)
-- [Testing](#testing)
 - [Deployment](#deployment)
 - [Contribution Guidelines](#contribution-guidelines)
 - [About](#about)
@@ -51,14 +48,6 @@ To build the assets only once, not watching for changes, run:
 
 ```bash
 yarn build
-```
-
-## Testing
-
-To run the test suit run:
-
-```bash
-yarn test
 ```
 
 ## Deployment
