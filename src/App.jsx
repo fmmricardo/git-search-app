@@ -1,7 +1,7 @@
-import React from "react";
-import Autocomplete from "../src/components/Autocomplete/";
+import React from 'react'
+import Autocomplete from './components/Autocomplete'
 
-import "./App.scss";
+import './App.scss'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Autocomplete />
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
