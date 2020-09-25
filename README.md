@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+# Git search app
 
-### `yarn start`
+Starting an app to search github users
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Table of Contents**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [Installation](#installation)
+- [Setup](#setup)
+- [Development](#development)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Contribution Guidelines](#contribution-guidelines)
+- [About](#about)
 
-### `yarn test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before starting, make sure you have the following dependencies installed on your system:
 
-### `yarn build`
+- Node.js version 9.5 or above;
+- Yarn;
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+if you have `node` and `npm` you can install `yarn` by running:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
+npm i -g yarn
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup
 
-### `yarn eject`
+First, clone & setup the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone git@github.com:fmmricardo/rm-blog.git
+cd rm-blog
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To start your development environment run:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+yarn develop
+```
 
-## Learn More
+This will start the gatsby application.
+This project uses gatsby to watch and compile assets.
+To build the assets only once, not watching for changes, run:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+yarn build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Testing
 
-### Code Splitting
+To run the test suit run:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```bash
+yarn test
+```
 
-### Analyzing the Bundle Size
+## Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This project has automatic deploys enabled on branch master. Check [build page][build-page] for manual deploys or run:
 
-### Making a Progressive Web App
+```bash
+yarn deploy
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Contribution Guidelines
 
-### Advanced Configuration
+Contributions must follow [Airbnb's guides](https://github.com/airbnb/javascript).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## About
 
-### Deployment
+This blog is maintained by [Ricardo Martins](https://ricardomartins.netlify.com).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you need to contact the maintainer, you may <a href="mailto:ricardofilipe5@sapo.pt">reach out to me</a>
