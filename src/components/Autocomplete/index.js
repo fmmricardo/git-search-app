@@ -1,43 +1,34 @@
 import React, {useState, useEffect, useRef} from "react";
 
-import {
-  useKey,
-  handleEnter,
-  handleArrowUp,
-  handleArrowDown,
-} from "../../auxiliarFunctions/keypressFunctions";
-import {magnifyGlass} from "../../assets/loupe.png";
+import SearchUsers from "./SearchUsers";
 
 import "./index.scss";
 
 const Autocomplete = () => {
-  useKey("Enter", handleEnter);
-  useKey("ArrowUp", handleArrowUp);
-  useKey("ArrowDown", handleArrowDown);
-
   const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [display, setDisplay] = useState(false);
-  //const [search, setSearch] = useState("");
   const wrapperRef = useRef(null);
 
   useEffect(() => {
     if (!inputValue) {
       return;
     }
-    setIsLoading(true);
-    fetch("https://api.github.com/search/users?q=" + inputValue)
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data.items);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
+    const timer = setTimeout(() => {
+      setIsLoading(true);
+      fetch("https://api.github.com/search/users?q=" + inputValue)
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data.items);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsLoading(false);
+        });
+    }, 300);
+    return () => clearTimeout(timer);
   }, [inputValue]);
 
   const handleClickOutside = (event) => {
@@ -54,10 +45,16 @@ const Autocomplete = () => {
     };
   });
 
-  const updateInput = (user) => {
-    setInputValue(user);
-    setDisplay(false);
+  const clickHandler = (user) => {
+    if (Array.isArray(users) && users.length) {
+      setDisplay(false);
+    } else {
+      setInputValue(user);
+      setDisplay(false);
+    }
   };
+
+  console.log(users);
 
   return (
     <div className="mainWrapper" ref={wrapperRef}>
@@ -76,39 +73,11 @@ const Autocomplete = () => {
             aria-required="true"
             placeholder="Search Github Users"
             onChange={(event) => setInputValue(event.target.value)}
-            onClick={() => setDisplay(!display)}
+            onClick={clickHandler}
           />
-          <img className="image" src={magnifyGlass} alt="search bar" />
         </div>
         {isLoading && <div>Loading ...</div>}
-        {users === "" && <div>No Results found</div>}
-        {error && <div>Loading ...</div>}
-        {display && users && (
-          <div className="userContainer">
-            {users.map((user) => {
-              const userUrl = `https://github.com/${user.login}`;
-              return (
-                <a
-                  onClick={() => updateInput(user.login)}
-                  tabIndex="0"
-                  className="option"
-                  key={user.id}
-                  href={userUrl}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <div>{user.login}</div>
-                  <div>
-                    <img
-                      className="image"
-                      src={user.avatar_url}
-                      alt={user.login}
-                    />
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        )}
+        {display && users && <SearchUsers users={users} />}
       </form>
     </div>
   );

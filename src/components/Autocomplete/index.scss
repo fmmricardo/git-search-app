@@ -1,62 +1,57 @@
+@import "../../styles/variables.scss";
+
 .input {
-  padding: 10px;
-  height: 20px;
-  width: 500px;
-  border: 1px solid purple;
-  border-radius: 4px;
-  margin: 10px;
-  font-size: 18px;
+  position: relative;
+
+  width: 100%;
+  padding: var(--size-12) var(--size-4);
+
+  border: 1px solid var(--color-grey);
+
+  font-size: var(--size-20);
   text-transform: capitalize;
 }
 
-.userContainer {
-  position: absolute;
-  border-width: 0px 1px;
-  border-style: solid;
-  border-color: goldenrod;
-  background-color: whitesmoke;
-  left: 10px;
-  top: 52px;
-  width: 520px;
+.image {
+  width: 50px;
+  margin-right: var(--size-20);
+
+  border-radius: 30%;
 }
 
 .link {
   text-decoration: none;
 }
 
-.option {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 500px;
-  padding: 5px;
-}
-
-.option,
-li,
-a {
-  font-size: 28px;
-  text-transform: capitalize;
-  text-decoration: none;
-  margin: 10px 0;
-  color: black;
-}
-
-.option:hover {
-  background-color: pink;
-  color: grey;
-}
-
 .mainWrapper {
-  width: 522px;
   position: relative;
+
+  width: 100%;
   margin: 0 auto;
 }
 
-.image {
-  width: 50px;
-  border-radius: 50%;
+.text {
+  margin-left: var(--size-20);
 }
-.userName {
+
+.userContainer {
+  position: absolute;
+  top: 50px;
+
+  width: 100%;
+  height: 300px;
+  padding: var(--size-12) var(--size-4);
+  overflow: hidden;
+
+  background-color: white;
+  border: 1px solid var(--color-dark-grayish-blue);
+  border-color: var(--color-dark-grayish-blue);
+  border-radius: var(--size-4);
+  overflow-y: scroll;
+}
+.feebbackMessage {
+  width: 100%;
+  margin-top: var(--size-20);
+  font-size: var(--size-20);
+  line-height: var(--size-24);
 }

@@ -6,8 +6,10 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-      <h1>Search github users</h1>
-      <div className="auto-container">
+      <div className="titleContainer">
+        <h1>Search github users</h1>
+      </div>
+      <div className="autoContainer">
         <Autocomplete />
       </div>
     </div>
