@@ -1,4 +1,3 @@
-/*eslint consistent-return: ["warning", { "treatUndefinedAsUnspecified": false }]*/
 import React, { useState, useEffect, useRef } from 'react'
 
 import SearchUsers from './SearchUsers'
