@@ -7,7 +7,7 @@ LABEL author="fmmricardo"
 ENV APP_ENV=production
 ENV PORT=3000
  
-COPY ./var/www
+COPY . /var/www
 COPY package.json ./
 COPY yarn.lock ./
 # set working directory
@@ -16,7 +16,7 @@ WORKDIR /var/www
 VOLUME ["/var/www"]
 
 # install app dependencies
-RUN yarn add --silent
+RUN yarn install --silent
 RUN yarn add react-scripts@3.4.1 -g --silent
 
 # port to run the app
